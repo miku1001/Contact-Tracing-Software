@@ -25,7 +25,11 @@ class FrontPage(tk.Tk):
     # search
     self.search_button = tk.Button(self, text="Search", command=self.search, width=10, height=1,font=("Arial", 18))
     self.search_button.pack(side=tk.BOTTOM, pady=5)
-    
-# create method for start button
 
-# create method for search button
+    # create method for start button
+    def start(self):
+        print("Temporary")
+
+    # create method for search button
+    def search(self):
+        print("Temporary")
