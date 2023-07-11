@@ -2,6 +2,9 @@
 import tkinter as tk
 from PIL import ImageTk, Image
 
+#import Infoframe
+from information_page import InfoFrame
+
 # create class
 class FrontPage(tk.Tk):
     # create main window
@@ -20,7 +23,7 @@ class FrontPage(tk.Tk):
 
         # create buttons    
         # add
-        self.add_button = tk.Button(self, text="Add Data", command=self.start, width=12, height=1, font=("Arial", 18))
+        self.add_button = tk.Button(self, text="Add Data", command=self.switch_to_infoframe, width=12, height=1, font=("Arial", 18))
         self.add_button.place(x=530, y=230)
 
         # search
@@ -29,7 +32,11 @@ class FrontPage(tk.Tk):
 
     # create method for start button
     def start(self):
-        print("Temporary")
+        self.switch_to_infoframe()
+
+    def switch_to_infoframe(self):
+        info_frame = InfoFrame()
+        info_frame.place(x=0, y=0, relwidth=1, relheight=1)
 
     # create method for search button
     def search(self):

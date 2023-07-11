@@ -21,7 +21,7 @@ class InfoFrame(tk.Frame):
         self.info.config(bg="#BAF8FA")
 
         # Date
-        self.date = tk.Label(self, text = "Date", height = 1, font=("Arial", 12)
+        self.date = tk.Label(self, text = "Date", height = 1, font=("Arial", 12))
         self.date.place(x = 30, y =40)
         self.date.config(bg="#BAF8FA")
 
