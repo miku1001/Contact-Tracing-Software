@@ -32,7 +32,7 @@ class FrontPage(tk.Tk):
 
     # create method for start button
     def start(self):
-        self.switch_to_infoframe()
+        self.switch_to_()
 
     def switch_to_infoframe(self):
         info_frame = InfoFrame()

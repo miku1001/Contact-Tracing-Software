@@ -26,5 +26,20 @@ class InfoFrame(tk.Frame):
         self.date.config(bg="#BAF8FA")
 
         # Date Entry
-        self.entry_date = tk.Entry(self, width = 30)
+        self.entry_date = tk.Entry(self, width=30)
         self.entry_date.place(x=120, y=43)
+        self.entry_date.insert(0, "MM/DD/YY")  # Set initial text
+        self.entry_date.bind("<FocusIn>", self.clear_date_text)
+        self.entry_date.config(fg="gray")
+        
+        # Name
+        self.name = tk.Label(self, text = "Full Name", height = 1, font=("Arial", 12))
+        self.name.place(x = 30, y =70)
+        self.name.config(bg="#BAF8FA")
+
+
+        
+
+    # Display text will be gone if the user click the entry
+    def clear_date_text(self, event):
+        self.entry_date.delete(0, tk.END)
