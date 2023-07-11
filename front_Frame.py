@@ -24,11 +24,11 @@ class FrontPage(tk.Tk):
         # create buttons    
         # add
         self.add_button = tk.Button(self, text="Add Data", command=self.switch_to_infoframe, width=12, height=1, font=("Arial", 18))
-        self.add_button.place(x=530, y=230)
+        self.add_button.place(x=520, y=230)
 
         # search
         self.search_button = tk.Button(self, text="Search", command=self.search, width=10, height=1, font=("Arial", 18))
-        self.search_button.place(x=545, y=290)
+        self.search_button.place(x=535, y=290)
 
     # create method for start button
     def start(self):

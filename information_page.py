@@ -46,21 +46,21 @@ class InfoFrame(tk.Frame):
 
         # Contact label
         self.info = tk.Label(self,text = "Contact Details", height=1, font=("Arial", 12))
-        self.info.place(x=400, y=43)
+        self.info.place(x=390, y=43)
         self.info.config(bg="#BAF8FA")
 
         # Contact Number
         self.number = tk.Label(self, text = "Contact Number: ", height = 1, font=("Arial", 12))
-        self.number.place(x = 400, y =70)
+        self.number.place(x = 390, y =70)
         self.number.config(bg="#BAF8FA")
 
         # CN Entry
         self.entry_number = tk.Entry(self, width=25)
-        self.entry_number.place(x=530, y= 73)
+        self.entry_number.place(x=520, y= 73)
 
         # Email
         self.email = tk.Label(self, text = "Email:", height = 1, font=("Arial", 12))
-        self.email.place(x = 655, y =70)
+        self.email.place(x = 665, y =70)
         self.email.config(bg="#BAF8FA")
 
         # Email Entry
@@ -69,6 +69,10 @@ class InfoFrame(tk.Frame):
         self.entry_email.insert(0, "juan23@example.com")  # Set initial text
         self.entry_email.bind("<FocusIn>", self.clear_date_text)
         self.entry_email.config(fg="gray")
+
+        # add division line
+        self.line = tk.Canvas(self, width=900, height=1, bg="black", highlightthickness=0)
+        self.line.place(x= 0, y=105)
         
 
     # Display text will be gone if the user click the entry
