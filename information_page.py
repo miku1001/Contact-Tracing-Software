@@ -37,7 +37,38 @@ class InfoFrame(tk.Frame):
         self.name.place(x = 30, y =70)
         self.name.config(bg="#BAF8FA")
 
+        # Name Entry
+        self.entry_name = tk.Entry(self, width=40)
+        self.entry_name.place(x=120, y= 73)
+        self.entry_name.insert(0, "FIRSTNAME/LASTNAME/SURNAME")  # Set initial text
+        self.entry_name.bind("<FocusIn>", self.clear_date_text)
+        self.entry_name.config(fg="gray")
 
+        # Contact label
+        self.info = tk.Label(self,text = "Contact Details", height=1, font=("Arial", 12))
+        self.info.place(x=400, y=43)
+        self.info.config(bg="#BAF8FA")
+
+        # Contact Number
+        self.number = tk.Label(self, text = "Contact Number: ", height = 1, font=("Arial", 12))
+        self.number.place(x = 400, y =70)
+        self.number.config(bg="#BAF8FA")
+
+        # CN Entry
+        self.entry_number = tk.Entry(self, width=25)
+        self.entry_number.place(x=530, y= 73)
+
+        # Email
+        self.email = tk.Label(self, text = "Email:", height = 1, font=("Arial", 12))
+        self.email.place(x = 655, y =70)
+        self.email.config(bg="#BAF8FA")
+
+        # Email Entry
+        self.entry_email = tk.Entry(self, width=25)
+        self.entry_email.place(x=715, y= 73)
+        self.entry_email.insert(0, "juan23@example.com")  # Set initial text
+        self.entry_email.bind("<FocusIn>", self.clear_date_text)
+        self.entry_email.config(fg="gray")
         
 
     # Display text will be gone if the user click the entry
