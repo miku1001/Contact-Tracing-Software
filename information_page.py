@@ -8,9 +8,9 @@ class InfoFrame(tk.Frame):
         tk.Frame.__init__(self)
 
         # Import bg image
-        image = Image.open("FFPAGE BG.png")
-        image = image.resize((900, 500), Image.NEAREST)
-        self.bg_image = ImageTk.PhotoImage(image)
+        self.image = Image.open("FFPAGE BG.png")
+        self.bg_image = ImageTk.PhotoImage(self.image)
+        self.bind("<Configure>", self.resize_image)
 
         self.bg_label = tk.Label(self, image=self.bg_image)
         self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
@@ -192,7 +192,7 @@ class InfoFrame(tk.Frame):
         self.vacc.config(bg="#BAF8FA")
 
         # subit button
-        self.submit_button = tk.Button(self, text="Add Data", height=1, font=("Arial", 11))
+        self.submit_button = tk.Button(self, text="submit", height=1, font=("Arial", 11), bg="green")
         self.submit_button.place(x=420, y=460)
 
 
@@ -213,4 +213,14 @@ class InfoFrame(tk.Frame):
         self.entry_number.config(fg="black")
     def clear_email_text(self, event):
         self.entry_email.delete(0, tk.END)
-        self.entry_email.config(fg="black")  
+        self.entry_email.config(fg="black")
+
+    # resize image 
+    def resize_image(self, event):
+        new_width = event.width
+        new_height = event.height
+
+        resized_image = self.image.resize((new_width, new_height), Image.NEAREST)
+        self.bg_image = ImageTk.PhotoImage(resized_image)
+
+        self.bg_label.configure(image=self.bg_image)  
