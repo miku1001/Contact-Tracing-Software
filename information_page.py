@@ -1,11 +1,11 @@
 # Import libraries
 import tkinter as tk
 from PIL import ImageTk, Image
-
+from suspected_page import SuspectedFrame
 # Create class for Info page
 class InfoFrame(tk.Frame):
     def __init__(self):
-
+        tk.Frame.__init__(self)
         # Import bg image
         self.image = Image.open("FFPAGE BG.png")
         self.bg_image = ImageTk.PhotoImage(self.image)
@@ -104,28 +104,35 @@ class InfoFrame(tk.Frame):
         self.vacc.place(x=400, y=110)
         self.vacc.config(bg="#BAF8FA")
 
+
         # Checkbutton for symptoms
-        self.symptom1 = tk.Checkbutton(self, text="Fever",fg="black", font=("Arial", 11)) 
+        self.symptom1_var = tk.BooleanVar()
+        self.symptom1 = tk.Checkbutton(self, text="Fever",fg="black", font=("Arial", 11), variable=self.symptom1_var, command=self.checkbutton_info) 
         self.symptom1.place(x=420, y=135)
         self.symptom1.config(bg="#BAF8FA")
 
-        self.symptom2 = tk.Checkbutton(self, text="Difficulty in breathing",fg="black", font=("Arial", 11)) 
+        self.symptom2_var = tk.BooleanVar()
+        self.symptom2 = tk.Checkbutton(self, text="Difficulty in breathing",fg="black", font=("Arial", 11),variable=self.symptom2_var, command=self.checkbutton_info) 
         self.symptom2.place(x=420, y=157)
         self.symptom2.config(bg="#BAF8FA")
 
-        self.symptom3 = tk.Checkbutton(self, text="Cough",fg="black", font=("Arial", 11)) 
+        self.symptom3_var = tk.BooleanVar()
+        self.symptom3 = tk.Checkbutton(self, text="Cough",fg="black", font=("Arial", 11), variable=self.symptom3_var, command=self.checkbutton_info) 
         self.symptom3.place(x=420, y=179)
         self.symptom3.config(bg="#BAF8FA")
 
-        self.symptom4 = tk.Checkbutton(self, text="Lost of sense of taste or smell",fg="black", font=("Arial", 11)) 
+        self.symptom4_var = tk.BooleanVar()
+        self.symptom4 = tk.Checkbutton(self, text="Lost of sense of taste or smell",fg="black", font=("Arial", 11), variable=self.symptom4_var, command=self.checkbutton_info) 
         self.symptom4.place(x=650, y=135)
         self.symptom4.config(bg="#BAF8FA")
 
-        self.symptom5 = tk.Checkbutton(self, text="Sore throat",fg="black", font=("Arial", 11)) 
+        self.symptom5_var = tk.BooleanVar()
+        self.symptom5 = tk.Checkbutton(self, text="Sore throat",fg="black", font=("Arial", 11), variable=self.symptom5_var, command=self.checkbutton_info) 
         self.symptom5.place(x=650, y=157)
         self.symptom5.config(bg="#BAF8FA")
 
-        self.no_symptom = tk.Checkbutton(self, text="None of the above",fg="black", font=("Arial", 11)) 
+        self.no_symptom_var = tk.BooleanVar()
+        self.no_symptom = tk.Checkbutton(self, text="None of the above",fg="black", font=("Arial", 11),variable=self.no_symptom_var, command=self.checkbutton_info) 
         self.no_symptom.place(x=650, y=179)
         self.no_symptom.config(bg="#BAF8FA")
 
@@ -186,14 +193,29 @@ class InfoFrame(tk.Frame):
         self.not_tested.config(bg="#BAF8FA")
 
         # Insert submit button and Instruction
-        self.info = tk.Label(self,text = "Check if your information is correct", height=1, font=("Arial", 11, "italic"))
-        self.info.place(x=340, y=430)
-        self.info.config(bg="#BAF8FA")
+        self.vacc = tk.Label(self,text = "Check if your information is correct", height=1, font=("Arial", 11, "italic"))
+        self.vacc.place(x=340, y=430)
+        self.vacc.config(bg="#BAF8FA")
 
         # submit button
-        self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green")
-        self.submit_button.place(x=420, y=460)
+        self.submit_button = tk.Button(self, text="Submit", command=self.submit_button_clicked, height=1, font=("Arial", 11), bg="green")
+        self.submit_button.place(x=420, y=460) 
+
+
+    # got to suspected pagee
+    def checkbutton_info(self):
+        if self.submit_clicked:
+            if self.symptom1_var.get() or self.symptom2_var.get() or self.symptom3_var.get():
+                self.switch_frame()
+    
+    def switch_frame(self):
+        info_frame = SuspectedFrame()
+        info_frame.place(x=0, y=0, relwidth=1, relheight=1)
         
+    # click submit button
+    def submit_button_clicked(self):
+        self.submit_clicked = True
+        self.checkbutton_info()
 
     # Display text will be gone if the user click the entry
     def clear_date_text(self, event):
@@ -216,7 +238,4 @@ class InfoFrame(tk.Frame):
 
         resized_image = self.image.resize((new_width, new_height), Image.NEAREST)
         self.bg_image = ImageTk.PhotoImage(resized_image)
-
-        self.bg_label.configure(image=self.bg_image)  
-
-    
+        self.bg_label.configure(image=self.bg_image) 
