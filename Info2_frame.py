@@ -1,5 +1,6 @@
 import tkinter as tk
 from PIL import ImageTk, Image
+from tkinter import messagebox
 
 # Create class for Info page
 class InfoFrame2(tk.Frame):
@@ -36,5 +37,9 @@ class InfoFrame2(tk.Frame):
         self.info.config(bg="#BAF8FA")
 
         # submit button
-        self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green")
+        self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green", command=self.create_popup)
         self.submit_button.place(x=420, y=430)
+
+    def create_popup(self):
+        messagebox.showinfo("Yehey!", "Your information is submittted sucessfully!!")
+            

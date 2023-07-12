@@ -8,3 +8,4 @@ from front_Frame import FrontPage
 front_frame = FrontPage()
 # Display front page
 front_frame.mainloop()
+

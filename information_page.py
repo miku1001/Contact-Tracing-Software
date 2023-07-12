@@ -201,8 +201,7 @@ class InfoFrame(tk.Frame):
         self.submit_button = tk.Button(self, text="Next", command=self.switch_to_infoframe2, height=1, font=("Arial", 11), bg="green")
         self.submit_button.place(x=420, y=460) 
 
-
-    # got to suspected pagee
+    # go to infoframe2
     def checkbutton_info(self):
             if self.symptom1_var.get() or self.symptom2_var.get() or self.symptom3_var.get():
                 self.switch_frame()
