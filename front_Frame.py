@@ -23,11 +23,11 @@ class FrontPage(tk.Tk):
         # create buttons    
         # add
         self.add_button = tk.Button(self, text="Add Data", command=self.switch_to_infoframe, width=12, height=1, font=("Arial", 18))
-        self.add_button.pack(side = "right", padx=60)
+        self.add_button.place(x=518, y=290)
 
         # search
         self.search_button = tk.Button(self, text="Search", command=self.search, width=10, height=1, font=("Arial", 18))
-        self.search_button.pack(side="right", padx=40)
+        self.search_button.place(x=530, y=230)
 
         self.bind("<Configure>", self.resize_image)
 
