@@ -207,7 +207,7 @@ class InfoFrame(tk.Frame):
 
         # submit button
         self.submit_button = tk.Button(self, text="Next", command=lambda: switch_frame(2), height=1, font=("Arial", 11), bg="green")
-        self.submit_button.place(x=420, y=460) 
+        self.submit_button.place(x=430, y=460) 
 
 
     def checkbutton_info(self):

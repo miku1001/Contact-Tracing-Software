@@ -4,12 +4,12 @@ from information_page import InfoFrame
 from Info2_frame import InfoFrame2
 
 
-class MyApp(tk.Tk):
+class ContactTracing(tk.Tk):
     def __init__(self):
         super().__init__()
         
         # Configure main application window
-        self.title("My Application")
+        self.title("Covid Contact Tracing App")
         self.geometry("900x500")
 
         self.frames = []
@@ -35,5 +35,5 @@ class MyApp(tk.Tk):
         self.show_frame(frame_number)  # Show the new frame
 
 if __name__ == "__main__":
-    app = MyApp()
+    app = ContactTracing()
     app.mainloop()

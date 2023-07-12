@@ -39,9 +39,14 @@ class InfoFrame2(tk.Frame):
         self.info.config(bg="#BAF8FA")
 
         # submit button
-        self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green", command=lambda: [switch_frame(0), self.create_popup()])
-        self.submit_button.place(x=420, y=430)
-    
+        self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green", command=lambda: [self.create_popup(), quit()])
+        self.submit_button.place(x=500, y=430)
 
+        # Back Button
+        self.submit_button = tk.Button(self, text="Back", height=1, font=("Arial", 11), bg="red", command=lambda: switch_frame(1))
+        self.submit_button.place(x=360, y=430)
+
+
+    # Create pop up notice
     def create_popup(self):
         messagebox.showinfo("Yehey!", "Your information is submittted sucessfully!!")
