@@ -4,7 +4,7 @@ from PIL import ImageTk, Image
 
 #import Infoframe
 from information_page import InfoFrame
-from suspected_page import SuspectedFrame
+from Info2_frame import InfoFrame2
 
 # create class
 class FrontPage(tk.Tk):

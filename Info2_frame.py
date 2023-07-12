@@ -2,7 +2,7 @@ import tkinter as tk
 from PIL import ImageTk, Image
 
 # Create class for Info page
-class SuspectedFrame(tk.Frame):
+class InfoFrame2(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self)
 

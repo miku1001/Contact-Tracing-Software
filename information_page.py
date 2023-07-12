@@ -1,7 +1,7 @@
 # Import libraries
 import tkinter as tk
 from PIL import ImageTk, Image
-from suspected_page import SuspectedFrame
+from Info2_frame import InfoFrame2
 # Create class for Info page
 class InfoFrame(tk.Frame):
     def __init__(self):
@@ -198,18 +198,17 @@ class InfoFrame(tk.Frame):
         self.vacc.config(bg="#BAF8FA")
 
         # submit button
-        self.submit_button = tk.Button(self, text="Submit", command=self.submit_button_clicked, height=1, font=("Arial", 11), bg="green")
+        self.submit_button = tk.Button(self, text="Next", command=self.switch_to_infoframe2, height=1, font=("Arial", 11), bg="green")
         self.submit_button.place(x=420, y=460) 
 
 
     # got to suspected pagee
     def checkbutton_info(self):
-        if self.submit_clicked:
             if self.symptom1_var.get() or self.symptom2_var.get() or self.symptom3_var.get():
                 self.switch_frame()
     
-    def switch_frame(self):
-        info_frame = SuspectedFrame()
+    def switch_to_infoframe2(self):
+        info_frame = InfoFrame2()
         info_frame.place(x=0, y=0, relwidth=1, relheight=1)
         
     # click submit button
