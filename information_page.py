@@ -92,21 +92,55 @@ class InfoFrame(tk.Frame):
         self.stat2.config(bg="#BAF8FA")
 
         self.stat3 = tk.Radiobutton(text="2nd Dose",font=("Arial", 10), variable=self.radio, value = "3")
-        self.stat3.place(x=43, y= 179)
+        self.stat3.place(x=170, y= 135)
         self.stat3.config(bg="#BAF8FA")
 
         self.stat4 = tk.Radiobutton(text="With Booster",font=("Arial", 10), variable=self.radio, value = "4")
-        self.stat4.place(x=43, y= 201)
+        self.stat4.place(x=170, y= 157)
         self.stat4.config(bg="#BAF8FA")
 
+        # Add checklist for symptoms
+        # Symptoms
+        self.vacc = tk.Label(self,text = "2. Symptoms experience in the past 7 days:", height=1, font=("Arial", 11))
+        self.vacc.place(x=400, y=110)
+        self.vacc.config(bg="#BAF8FA")
+
+        # Checkbutton for symptoms
+        self.symptom1 = tk.Checkbutton(self, text="Fever",fg="black", font=("Arial", 11)) 
+        self.symptom1.place(x=420, y=135)
+        self.symptom1.config(bg="#BAF8FA")
+
+        self.symptom2 = tk.Checkbutton(self, text="Difficulty in breathing",fg="black", font=("Arial", 11)) 
+        self.symptom2.place(x=420, y=157)
+        self.symptom2.config(bg="#BAF8FA")
+
+        self.symptom3 = tk.Checkbutton(self, text="Cough",fg="black", font=("Arial", 11)) 
+        self.symptom3.place(x=420, y=179)
+        self.symptom3.config(bg="#BAF8FA")
+
+        self.symptom4 = tk.Checkbutton(self, text="Lost of sense of taste or smell",fg="black", font=("Arial", 11)) 
+        self.symptom4.place(x=650, y=135)
+        self.symptom4.config(bg="#BAF8FA")
+
+        self.symptom5 = tk.Checkbutton(self, text="Sore throat",fg="black", font=("Arial", 11)) 
+        self.symptom5.place(x=650, y=157)
+        self.symptom5.config(bg="#BAF8FA")
+
+        self.no_symptom = tk.Checkbutton(self, text="None of the above",fg="black", font=("Arial", 11)) 
+        self.no_symptom.place(x=650, y=179)
+        self.no_symptom.config(bg="#BAF8FA")
 
 
     # Display text will be gone if the user click the entry
     def clear_date_text(self, event):
         self.entry_date.delete(0, tk.END)
+        self.entry_date.config(fg="black")
     def clear_name_text(self, event):
         self.entry_name.delete(0, tk.END)
+        self.entry_name.config(fg="black")
     def clear_number_text(self, evert):
         self.entry_number.delete(0, tk.END)
+        self.entry_number.config(fg="black")
     def clear_email_text(self, event):
-        self.entry_email.delete(0, tk.END)    
+        self.entry_email.delete(0, tk.END)
+        self.entry_email.config(fg="black")  
