@@ -4,8 +4,10 @@ from tkinter import messagebox
 
 # Create class for Info page
 class InfoFrame2(tk.Frame):
-    def __init__(self):
-        tk.Frame.__init__(self)
+    def __init__(self, parent, switch_frame):
+        tk.Frame.__init__(self, parent)
+        self.label = tk.Label(self, text="Frame 2")
+        self.label.pack(pady=20)
 
         # Import bg image
         image = Image.open("FFPAGE BG.png")
@@ -37,9 +39,9 @@ class InfoFrame2(tk.Frame):
         self.info.config(bg="#BAF8FA")
 
         # submit button
-        self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green", command=self.create_popup)
+        self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green", command=lambda: [switch_frame(0), self.create_popup()])
         self.submit_button.place(x=420, y=430)
+    
 
     def create_popup(self):
         messagebox.showinfo("Yehey!", "Your information is submittted sucessfully!!")
-            

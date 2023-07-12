@@ -1,11 +1,19 @@
 # Import libraries
 import tkinter as tk
 from PIL import ImageTk, Image
-from Info2_frame import InfoFrame2
+
 # Create class for Info page
 class InfoFrame(tk.Frame):
-    def __init__(self):
-        tk.Frame.__init__(self)
+    def __init__(self, parent, switch_frame):
+        tk.Frame.__init__(self, parent)
+
+        self.label = tk.Label(self, text="Frame 1")
+        self.label.pack(pady=20)
+
+      # Create a separate frame for encapsulating the widgets
+        content_frame = tk.Frame(self)
+        content_frame.pack()
+
         # Import bg image
         self.image = Image.open("FFPAGE BG.png")
         self.bg_image = ImageTk.PhotoImage(self.image)
@@ -82,19 +90,19 @@ class InfoFrame(tk.Frame):
         
         # Vacc stat
         self.radio = tk.IntVar()
-        self.stat1 = tk.Radiobutton(text="Not Yet",font=("Arial", 10),variable=self.radio,  value = "1")
+        self.stat1 = tk.Radiobutton(self, text="Not Yet",font=("Arial", 10),variable=self.radio,  value = "1")
         self.stat1.place(x=43, y= 135)
         self.stat1.config(bg="#BAF8FA")
 
-        self.stat2 = tk.Radiobutton(text="1st Dose",font=("Arial", 10), variable=self.radio, value = "2")
+        self.stat2 = tk.Radiobutton(self, text="1st Dose",font=("Arial", 10), variable=self.radio, value = "2")
         self.stat2.place(x=43, y= 157)
         self.stat2.config(bg="#BAF8FA")
 
-        self.stat3 = tk.Radiobutton(text="2nd Dose",font=("Arial", 10), variable=self.radio, value = "3")
+        self.stat3 = tk.Radiobutton(self, text="2nd Dose",font=("Arial", 10), variable=self.radio, value = "3")
         self.stat3.place(x=170, y= 135)
         self.stat3.config(bg="#BAF8FA")
 
-        self.stat4 = tk.Radiobutton(text="With Booster",font=("Arial", 10), variable=self.radio, value = "4")
+        self.stat4 = tk.Radiobutton(self, text="With Booster",font=("Arial", 10), variable=self.radio, value = "4")
         self.stat4.place(x=170, y= 157)
         self.stat4.config(bg="#BAF8FA")
 
@@ -144,11 +152,11 @@ class InfoFrame(tk.Frame):
 
         # Yes or no
         self.radio = tk.IntVar()
-        self.yes1 = tk.Radiobutton(text="Yes",font=("Arial", 10),variable=self.radio,  value = "1")
+        self.yes1 = tk.Radiobutton(self, text="Yes",font=("Arial", 10),variable=self.radio,  value = "1")
         self.yes1.place(x=40, y= 245)
         self.yes1.config(bg="#BAF8FA")
 
-        self.no1 = tk.Radiobutton(text="No",font=("Arial", 10),variable=self.radio,  value = "2")
+        self.no1 = tk.Radiobutton(self, text="No",font=("Arial", 10),variable=self.radio,  value = "2")
         self.no1.place(x=130, y= 245)
         self.no1.config(bg="#BAF8FA")
 
@@ -160,11 +168,11 @@ class InfoFrame(tk.Frame):
 
         # Yes or no
         self.radio = tk.IntVar()
-        self.yes2 = tk.Radiobutton(text="Yes",font=("Arial", 10),variable=self.radio,  value = "1")
+        self.yes2 = tk.Radiobutton(self, text="Yes",font=("Arial", 10),variable=self.radio,  value = "1")
         self.yes2.place(x=40, y= 305)
         self.yes2.config(bg="#BAF8FA")
 
-        self.no2 = tk.Radiobutton(text="No",font=("Arial", 10),variable=self.radio,  value = "2")
+        self.no2 = tk.Radiobutton(self, text="No",font=("Arial", 10),variable=self.radio,  value = "2")
         self.no2.place(x=130, y= 305)
         self.no2.config(bg="#BAF8FA")
 
@@ -176,19 +184,19 @@ class InfoFrame(tk.Frame):
 
         # Tested?
         self.radio = tk.IntVar()
-        self.yes_negative = tk.Radiobutton(text="Yes (Negative)",font=("Arial", 10),variable=self.radio,  value = "1")
+        self.yes_negative = tk.Radiobutton(self, text="Yes (Negative)",font=("Arial", 10),variable=self.radio,  value = "1")
         self.yes_negative.place(x=40, y= 370 )
         self.yes_negative.config(bg="#BAF8FA")
 
-        self.yes_positive = tk.Radiobutton(text="Yes (Positive) ",font=("Arial", 10),variable=self.radio,  value = "2")
+        self.yes_positive = tk.Radiobutton(self, text="Yes (Positive) ",font=("Arial", 10),variable=self.radio,  value = "2")
         self.yes_positive.place(x=40, y= 400)
         self.yes_positive.config(bg="#BAF8FA")
         
-        self.yes_pending = tk.Radiobutton(text="Yes (Pending) ",font=("Arial", 10),variable=self.radio,  value = "2")
+        self.yes_pending = tk.Radiobutton(self, text="Yes (Pending) ",font=("Arial", 10),variable=self.radio,  value = "2")
         self.yes_pending.place(x=200, y= 370)
         self.yes_pending.config(bg="#BAF8FA")
 
-        self.not_tested = tk.Radiobutton(text="No ",font=("Arial", 10),variable=self.radio,  value = "2")
+        self.not_tested = tk.Radiobutton(self, text="No ",font=("Arial", 10),variable=self.radio,  value = "2")
         self.not_tested.place(x=200, y= 400)
         self.not_tested.config(bg="#BAF8FA")
 
@@ -198,17 +206,12 @@ class InfoFrame(tk.Frame):
         self.vacc.config(bg="#BAF8FA")
 
         # submit button
-        self.submit_button = tk.Button(self, text="Next", command=self.switch_to_infoframe2, height=1, font=("Arial", 11), bg="green")
+        self.submit_button = tk.Button(self, text="Next", command=lambda: switch_frame(2), height=1, font=("Arial", 11), bg="green")
         self.submit_button.place(x=420, y=460) 
 
-    # go to infoframe2
+
     def checkbutton_info(self):
-            if self.symptom1_var.get() or self.symptom2_var.get() or self.symptom3_var.get():
-                self.switch_frame()
-    
-    def switch_to_infoframe2(self):
-        info_frame = InfoFrame2()
-        info_frame.place(x=0, y=0, relwidth=1, relheight=1)
+        pass
         
     # click submit button
     def submit_button_clicked(self):
@@ -237,3 +240,9 @@ class InfoFrame(tk.Frame):
         resized_image = self.image.resize((new_width, new_height), Image.NEAREST)
         self.bg_image = ImageTk.PhotoImage(resized_image)
         self.bg_label.configure(image=self.bg_image) 
+
+    def show(self):
+        self.pack()
+
+    def hide(self):
+        self.pack_forget()

@@ -2,17 +2,13 @@
 import tkinter as tk
 from PIL import ImageTk, Image
 
-#import Infoframe
-from information_page import InfoFrame
-from Info2_frame import InfoFrame2
-
 # create class
-class FrontPage(tk.Tk):
+class FrontPage(tk.Frame):
     # create main window
-    def __init__(self):
-        super().__init__()
-        self.title("Covid-19 Contact Tracing App")
-        self.geometry("900x500")
+    def __init__(self, parent, switch_frame):
+        tk.Frame.__init__(self, parent)
+        self.label = tk.Label(self, text="Frame 0")
+        self.label.pack(pady=20)
 
     # create background image for front page
         self.image = Image.open("FRONTPAGE BG.png")  # Update the image file path
@@ -21,9 +17,9 @@ class FrontPage(tk.Tk):
         self.bg_label = tk.Label(self, image=self.bg_image)
         self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-        # create buttons    
+        # create buttons
         # add
-        self.add_button = tk.Button(self, text="Add Data", command=self.switch_to_infoframe, width=12, height=1, font=("Arial", 18))
+        self.add_button = tk.Button(self, text="Add Data", command=lambda: switch_frame(1), width=12, height=1, font=("Arial", 18))
         self.add_button.place(x=518, y=290)
 
         # search
@@ -31,14 +27,6 @@ class FrontPage(tk.Tk):
         self.search_button.place(x=530, y=230)
 
         self.bind("<Configure>", self.resize_image)
-
-    # create method for start button
-    def start(self):
-        self.switch_to_infoframe()
-
-    def switch_to_infoframe(self):
-        info_frame = InfoFrame()
-        info_frame.place(x=0, y=0, relwidth=1, relheight=1)
 
     # create method for search button
     def search(self):
@@ -53,5 +41,9 @@ class FrontPage(tk.Tk):
         self.bg_image = ImageTk.PhotoImage(resized_image)
 
         self.bg_label.configure(image=self.bg_image)
-front_frame = FrontPage()
-front_frame.mainloop()
+
+    def show(self):
+        self.pack()
+
+    def hide(self):
+        self.pack_forget()
