@@ -187,13 +187,14 @@ class InfoFrame(tk.Frame):
         self.not_tested.config(bg="#BAF8FA")
 
         # Insert submit button and Instruction
-        self.vacc = tk.Label(self,text = "Check if your information is correct", height=1, font=("Arial", 11))
+        self.vacc = tk.Label(self,text = "Check if your information is correct", height=1, font=("Arial", 11, "italic"))
         self.vacc.place(x=340, y=430)
         self.vacc.config(bg="#BAF8FA")
 
-        # subit button
-        self.submit_button = tk.Button(self, text="submit", height=1, font=("Arial", 11), bg="green")
+        # submit button
+        self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green")
         self.submit_button.place(x=420, y=460)
+        
 
 
 
