@@ -5,7 +5,6 @@ from PIL import ImageTk, Image
 # Create class for Info page
 class InfoFrame(tk.Frame):
     def __init__(self):
-        tk.Frame.__init__(self)
 
         # Import bg image
         self.image = Image.open("FFPAGE BG.png")
@@ -187,20 +186,14 @@ class InfoFrame(tk.Frame):
         self.not_tested.config(bg="#BAF8FA")
 
         # Insert submit button and Instruction
-        self.vacc = tk.Label(self,text = "Check if your information is correct", height=1, font=("Arial", 11, "italic"))
-        self.vacc.place(x=340, y=430)
-        self.vacc.config(bg="#BAF8FA")
+        self.info = tk.Label(self,text = "Check if your information is correct", height=1, font=("Arial", 11, "italic"))
+        self.info.place(x=340, y=430)
+        self.info.config(bg="#BAF8FA")
 
         # submit button
         self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green")
         self.submit_button.place(x=420, y=460)
         
-
-
-
-        
-
-
 
     # Display text will be gone if the user click the entry
     def clear_date_text(self, event):
@@ -225,3 +218,5 @@ class InfoFrame(tk.Frame):
         self.bg_image = ImageTk.PhotoImage(resized_image)
 
         self.bg_label.configure(image=self.bg_image)  
+
+    

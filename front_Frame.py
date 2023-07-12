@@ -4,6 +4,7 @@ from PIL import ImageTk, Image
 
 #import Infoframe
 from information_page import InfoFrame
+from suspected_page import SuspectedFrame
 
 # create class
 class FrontPage(tk.Tk):
@@ -52,9 +53,5 @@ class FrontPage(tk.Tk):
         self.bg_image = ImageTk.PhotoImage(resized_image)
 
         self.bg_label.configure(image=self.bg_image)
-
-
-
-if __name__ == "__main__":
-    root = FrontPage()
-    root.mainloop()
+front_frame = FrontPage()
+front_frame.mainloop()
