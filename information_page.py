@@ -138,13 +138,54 @@ class InfoFrame(tk.Frame):
 
         # Yes or no
         self.radio = tk.IntVar()
-        self.yes = tk.Radiobutton(text="Yes",font=("Arial", 10),variable=self.radio,  value = "1")
-        self.yes.place(x=40, y= 245)
-        self.yes.config(bg="#BAF8FA")
+        self.yes1 = tk.Radiobutton(text="Yes",font=("Arial", 10),variable=self.radio,  value = "1")
+        self.yes1.place(x=40, y= 245)
+        self.yes1.config(bg="#BAF8FA")
 
-        self.no = tk.Radiobutton(text="No",font=("Arial", 10),variable=self.radio,  value = "2")
-        self.no.place(x=130, y= 245)
-        self.no.config(bg="#BAF8FA")
+        self.no1 = tk.Radiobutton(text="No",font=("Arial", 10),variable=self.radio,  value = "2")
+        self.no1.place(x=130, y= 245)
+        self.no1.config(bg="#BAF8FA")
+
+        # In contact with someone with symptoms
+        self.vacc = tk.Label(self,text = "4. Have you been in close contact with someone who has symptoms "
+                             "stated above?", height=1, font=("Arial", 11))
+        self.vacc.place(x=30, y=280)
+        self.vacc.config(bg="#BAF8FA")
+
+        # Yes or no
+        self.radio = tk.IntVar()
+        self.yes2 = tk.Radiobutton(text="Yes",font=("Arial", 10),variable=self.radio,  value = "1")
+        self.yes2.place(x=40, y= 305)
+        self.yes2.config(bg="#BAF8FA")
+
+        self.no2 = tk.Radiobutton(text="No",font=("Arial", 10),variable=self.radio,  value = "2")
+        self.no2.place(x=130, y= 305)
+        self.no2.config(bg="#BAF8FA")
+
+        # In contact with someone with symptoms
+        self.vacc = tk.Label(self,text = "5. Have you been tested for Covid-19 in the last 14 days? "
+                             "stated above?", height=1, font=("Arial", 11))
+        self.vacc.place(x=30, y=330)
+        self.vacc.config(bg="#BAF8FA")
+
+        # Tested?
+        self.radio = tk.IntVar()
+        self.yes_negative = tk.Radiobutton(text="Yes (Negative)",font=("Arial", 10),variable=self.radio,  value = "1")
+        self.yes_negative.place(x=40, y= 370 )
+        self.yes_negative.config(bg="#BAF8FA")
+
+        self.yes_positive = tk.Radiobutton(text="Yes (Positive) ",font=("Arial", 10),variable=self.radio,  value = "2")
+        self.yes_positive.place(x=40, y= 400)
+        self.yes_positive.config(bg="#BAF8FA")
+        
+        self.yes_pending = tk.Radiobutton(text="Yes (Pending) ",font=("Arial", 10),variable=self.radio,  value = "2")
+        self.yes_pending.place(x=200, y= 370)
+        self.yes_pending.config(bg="#BAF8FA")
+
+        self.not_tested = tk.Radiobutton(text="No ",font=("Arial", 10),variable=self.radio,  value = "2")
+        self.not_tested.place(x=200, y= 400)
+        self.not_tested.config(bg="#BAF8FA")
+
 
         
 
