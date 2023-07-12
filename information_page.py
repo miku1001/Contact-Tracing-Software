@@ -130,6 +130,25 @@ class InfoFrame(tk.Frame):
         self.no_symptom.place(x=650, y=179)
         self.no_symptom.config(bg="#BAF8FA")
 
+        # In contact with someone positive
+        self.vacc = tk.Label(self,text = "3. Have you been in close contact with someone who has tested positive for " 
+                             "COVID-19 in the past 14 days?", height=1, font=("Arial", 11))
+        self.vacc.place(x=30, y=220)
+        self.vacc.config(bg="#BAF8FA")
+
+        # Yes or no
+        self.radio = tk.IntVar()
+        self.yes = tk.Radiobutton(text="Yes",font=("Arial", 10),variable=self.radio,  value = "1")
+        self.yes.place(x=40, y= 245)
+        self.yes.config(bg="#BAF8FA")
+
+        self.no = tk.Radiobutton(text="No",font=("Arial", 10),variable=self.radio,  value = "2")
+        self.no.place(x=130, y= 245)
+        self.no.config(bg="#BAF8FA")
+
+        
+
+
 
     # Display text will be gone if the user click the entry
     def clear_date_text(self, event):
