@@ -1,6 +1,7 @@
 # Import libraries
 import tkinter as tk
 from PIL import ImageTk, Image
+from tkinter import messagebox
 
 # Create class for Info page
 class InfoFrame(tk.Frame):
@@ -90,19 +91,19 @@ class InfoFrame(tk.Frame):
         
         # Vacc stat
         self.radio_vacc = tk.IntVar()
-        self.stat1 = tk.Radiobutton(self, text="Not Yet",font=("Arial", 10),variable=self.radio_vacc,  value = "1")
+        self.stat1 = tk.Radiobutton(self, text="Not Yet",font=("Arial", 10),variable=self.radio_vacc,  value = "Not Yet")
         self.stat1.place(x=43, y= 135)
         self.stat1.config(bg="#BAF8FA")
 
-        self.stat2 = tk.Radiobutton(self, text="1st Dose",font=("Arial", 10), variable=self.radio_vacc, value = "2")
+        self.stat2 = tk.Radiobutton(self, text="1st Dose",font=("Arial", 10), variable=self.radio_vacc, value = "1st Dose")
         self.stat2.place(x=43, y= 157)
         self.stat2.config(bg="#BAF8FA")
 
-        self.stat3 = tk.Radiobutton(self, text="2nd Dose",font=("Arial", 10), variable=self.radio_vacc, value = "3")
+        self.stat3 = tk.Radiobutton(self, text="2nd Dose",font=("Arial", 10), variable=self.radio_vacc, value = "2nd Dose")
         self.stat3.place(x=170, y= 135)
         self.stat3.config(bg="#BAF8FA")
 
-        self.stat4 = tk.Radiobutton(self, text="With Booster",font=("Arial", 10), variable=self.radio_vacc, value = "4")
+        self.stat4 = tk.Radiobutton(self, text="With Booster",font=("Arial", 10), variable=self.radio_vacc, value = "With Booster")
         self.stat4.place(x=170, y= 157)
         self.stat4.config(bg="#BAF8FA")
 
@@ -115,32 +116,32 @@ class InfoFrame(tk.Frame):
 
         # Checkbutton for symptoms
         self.symptom1_var = tk.BooleanVar()
-        self.symptom1 = tk.Checkbutton(self, text="Fever",fg="black", font=("Arial", 11), variable=self.symptom1_var, command=self.checkbutton_info) 
+        self.symptom1 = tk.Checkbutton(self, text="Fever",fg="black", font=("Arial", 11), variable=self.symptom1_var) 
         self.symptom1.place(x=420, y=135)
         self.symptom1.config(bg="#BAF8FA")
 
         self.symptom2_var = tk.BooleanVar()
-        self.symptom2 = tk.Checkbutton(self, text="Difficulty in breathing",fg="black", font=("Arial", 11),variable=self.symptom2_var, command=self.checkbutton_info) 
+        self.symptom2 = tk.Checkbutton(self, text="Difficulty in breathing",fg="black", font=("Arial", 11),variable=self.symptom2_var)
         self.symptom2.place(x=420, y=157)
         self.symptom2.config(bg="#BAF8FA")
 
         self.symptom3_var = tk.BooleanVar()
-        self.symptom3 = tk.Checkbutton(self, text="Cough",fg="black", font=("Arial", 11), variable=self.symptom3_var, command=self.checkbutton_info) 
+        self.symptom3 = tk.Checkbutton(self, text="Cough",fg="black", font=("Arial", 11), variable=self.symptom3_var) 
         self.symptom3.place(x=420, y=179)
         self.symptom3.config(bg="#BAF8FA")
 
         self.symptom4_var = tk.BooleanVar()
-        self.symptom4 = tk.Checkbutton(self, text="Lost of sense of taste or smell",fg="black", font=("Arial", 11), variable=self.symptom4_var, command=self.checkbutton_info) 
+        self.symptom4 = tk.Checkbutton(self, text="Lost of sense of taste or smell",fg="black", font=("Arial", 11), variable=self.symptom4_var) 
         self.symptom4.place(x=650, y=135)
         self.symptom4.config(bg="#BAF8FA")
 
         self.symptom5_var = tk.BooleanVar()
-        self.symptom5 = tk.Checkbutton(self, text="Sore throat",fg="black", font=("Arial", 11), variable=self.symptom5_var, command=self.checkbutton_info) 
+        self.symptom5 = tk.Checkbutton(self, text="Sore throat",fg="black", font=("Arial", 11), variable=self.symptom5_var) 
         self.symptom5.place(x=650, y=157)
         self.symptom5.config(bg="#BAF8FA")
 
         self.no_symptom_var = tk.BooleanVar()
-        self.no_symptom = tk.Checkbutton(self, text="None of the above",fg="black", font=("Arial", 11),variable=self.no_symptom_var, command=self.checkbutton_info) 
+        self.no_symptom = tk.Checkbutton(self, text="None of the above",fg="black", font=("Arial", 11),variable=self.no_symptom_var) 
         self.no_symptom.place(x=650, y=179)
         self.no_symptom.config(bg="#BAF8FA")
 
@@ -152,11 +153,11 @@ class InfoFrame(tk.Frame):
 
         # Yes or no
         self.radio_contact_positive = tk.IntVar()
-        self.yes1 = tk.Radiobutton(self, text="Yes",font=("Arial", 10),variable=self.radio_contact_positive,  value = "1")
+        self.yes1 = tk.Radiobutton(self, text="Yes",font=("Arial", 10),variable=self.radio_contact_positive,  value = "Yes")
         self.yes1.place(x=40, y= 245)
         self.yes1.config(bg="#BAF8FA")
 
-        self.no1 = tk.Radiobutton(self, text="No",font=("Arial", 10),variable=self.radio_contact_positive,  value = "2")
+        self.no1 = tk.Radiobutton(self, text="No",font=("Arial", 10),variable=self.radio_contact_positive,  value = "No")
         self.no1.place(x=130, y= 245)
         self.no1.config(bg="#BAF8FA")
 
@@ -206,12 +207,8 @@ class InfoFrame(tk.Frame):
         self.vacc.config(bg="#BAF8FA")
 
         # submit button
-        self.submit_button = tk.Button(self, text="Next", command=lambda: [self.save_info(), switch_frame(2)], height=1, font=("Arial", 11), bg="green")
+        self.submit_button = tk.Button(self, text="Next", command=lambda: [self.validate_form(), self.save_info(), switch_frame(2)], height=1, font=("Arial", 11), bg="green")
         self.submit_button.place(x=430, y=460) 
-
-
-    def checkbutton_info(self):
-        pass
         
     # click submit button
     def submit_button_clicked(self):
@@ -262,6 +259,15 @@ class InfoFrame(tk.Frame):
         contact_symptoms = self.radio_contact_symptoms.get()
         tested_covid = self.radio_tested_covid.get()
 
+        # Get checklist values
+        symptom1 = self.symptom1_var.get()
+        symptom2 = self.symptom2_var.get()
+        symptom3 = self.symptom3_var.get()
+        symptom4 = self.symptom4_var.get()
+        symptom5 = self.symptom5_var.get()
+        no_symptom = self.no_symptom_var.get()
+        
+
         # Create a string with the formatted information
         info_string = f"Date: {date}\nName: {name}\nContact Number: {number}\nEmail: {email}\n"
         info_string += f"Vaccination Status: {vaccination_status}\n"
@@ -269,6 +275,33 @@ class InfoFrame(tk.Frame):
         info_string += f"Close Contact with Symptoms: {contact_symptoms}\n"
         info_string += f"Tested for COVID-19: {tested_covid}\n"
 
+        # Write checked values horizontally
+        symptoms = []
+        if self.symptom1_var.get():
+            symptoms.append("Fever")
+        if self.symptom2_var.get():
+            symptoms.append("Difficulty in breathing")
+        if self.symptom3_var.get():
+            symptoms.append("Cough")
+        if self.symptom4_var.get():
+            symptoms.append("Loss of sense of taste or smell")
+        if self.symptom5_var.get():
+            symptoms.append("Sore throat")
+        if self.no_symptom_var.get():
+            symptoms.append("None")
+
+        # Format symptoms
+        info_string += f"Symptoms experienced in the past 7 days: {', '.join(symptoms)}"
+
         # Write the information to a text file
         with open("contact_tracing_data.txt", "a") as file:
             file.write(info_string)
+
+        # Must complete the data
+    def validate_form(self):
+        # Check if at least one radio button is selected
+        if self.radio_vacc.get() == 0 or self.radio_contact_positive.get() == 0 or self.radio_contact_symptoms.get() == 0 or self.radio_tested_covid.get() == 0:
+            tk.messagebox.showerror("Error", "Please select an option for all radio buttons.")
+            return False
+        else:
+            return True
