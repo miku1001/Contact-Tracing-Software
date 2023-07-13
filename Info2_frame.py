@@ -1,12 +1,13 @@
 import tkinter as tk
 from PIL import ImageTk, Image
 from tkinter import messagebox
+from information_page import InfoFrame
 
 
 # Create class for Info page
-class InfoFrame2(tk.Frame):
+class InfoFrame2(InfoFrame):
     def __init__(self, parent, switch_frame):
-        tk.Frame.__init__(self, parent)
+        super().__init__(parent, switch_frame)
         self.label = tk.Label(self, text="Frame 2")
         self.label.pack(pady=20)
 
@@ -40,7 +41,7 @@ class InfoFrame2(tk.Frame):
         self.info.config(bg="#BAF8FA")
 
         # submit button
-        self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green", command=lambda: [self.create_popup(), quit()])
+        self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green", command=lambda: [self.save_info(), self.create_popup(), quit()])
         self.submit_button.place(x=500, y=430)
 
         # Back Button
