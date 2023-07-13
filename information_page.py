@@ -206,7 +206,7 @@ class InfoFrame(tk.Frame):
         self.vacc.config(bg="#BAF8FA")
 
         # submit button
-        self.submit_button = tk.Button(self, text="Next", command=lambda: switch_frame(2), height=1, font=("Arial", 11), bg="green")
+        self.submit_button = tk.Button(self, text="Next", command=lambda: [self.save_info(), switch_frame(2)], height=1, font=("Arial", 11), bg="green")
         self.submit_button.place(x=430, y=460) 
 
 
@@ -246,3 +246,18 @@ class InfoFrame(tk.Frame):
 
     def hide(self):
         self.pack_forget()
+
+    # save entry info to txt
+    def save_info(self):
+        # Get the information from the entry fields
+        date = self.entry_date.get()
+        name = self.entry_name.get()
+        number = self.entry_number.get()
+        email = self.entry_email.get()
+
+        # Create a string with the formatted information
+        info_string = f"Date: {date}\nName: {name}\nContact Number: {number}\nEmail: {email}\n"
+
+        # Write the information to a text file
+        with open("contact_tracing_data.txt", "a") as file:
+            file.write(info_string)

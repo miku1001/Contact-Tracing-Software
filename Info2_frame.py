@@ -2,6 +2,7 @@ import tkinter as tk
 from PIL import ImageTk, Image
 from tkinter import messagebox
 
+
 # Create class for Info page
 class InfoFrame2(tk.Frame):
     def __init__(self, parent, switch_frame):
