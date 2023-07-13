@@ -23,14 +23,10 @@ class FrontPage(tk.Frame):
         self.add_button.place(x=518, y=290)
 
         # search
-        self.search_button = tk.Button(self, text="Search", command=self.search, width=10, height=1, font=("Arial", 18))
+        self.search_button = tk.Button(self, text="Search", command=lambda: switch_frame(3), width=10, height=1, font=("Arial", 18))
         self.search_button.place(x=530, y=230)
 
         self.bind("<Configure>", self.resize_image)
-
-    # create method for search button
-    def search(self):
-        print("Temporary")
 
     # resize image 
     def resize_image(self, event):

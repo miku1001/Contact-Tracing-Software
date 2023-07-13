@@ -2,6 +2,7 @@ import tkinter as tk
 from front_Frame import FrontPage
 from information_page import InfoFrame
 from Info2_frame import InfoFrame2
+from search_frame import SearchFrame
 
 
 class ContactTracing(tk.Tk):
@@ -19,8 +20,9 @@ class ContactTracing(tk.Tk):
         self.frame0 = FrontPage(self, self.switch_frame)
         self.frame1 = InfoFrame(self, self.switch_frame)
         self.frame2 = InfoFrame2(self, self.switch_frame)
-    
-        self.frames = [self.frame0, self.frame1, self.frame2]
+        self.frame3 = SearchFrame(self, self.switch_frame)
+
+        self.frames = [self.frame0, self.frame1, self.frame2, self.frame3]
 
         # Show the first frame
         self.show_frame(self.current_frame)
