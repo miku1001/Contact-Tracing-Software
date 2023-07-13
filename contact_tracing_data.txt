@@ -1,0 +1,2 @@
+aug, ted, 0909, ted@ted.com, YES , No, Yes, Yes (Positive), Fever| Difficulty in breathing| Cough, kahapon, bahay
+aug, mark, 0909, ted@ted.com, YES , No, Yes, Yes (Positive), Fever| Difficulty in breathing| Cough, kahapon, hatdog

@@ -1,6 +1,6 @@
 import tkinter as tk
 from PIL import ImageTk, Image
-from tkinter import messagebox
+from functools import partial
 
 # Create class for Info page
 class SearchFrame(tk.Frame):
@@ -33,7 +33,7 @@ class SearchFrame(tk.Frame):
         self.entry_search.place(x=34, y=95)
 
         # Create Search Button
-        self.submit_button = tk.Button(self, text="Search", height=1, font=("Arial", 10), bg="white")
+        self.submit_button = tk.Button(self, text="Search", height=1, font=("Arial", 10), bg="white", command= self.reader)
         self.submit_button.place(x=34, y=135)
 
 
@@ -42,9 +42,45 @@ class SearchFrame(tk.Frame):
         self.search.config(bg="#BAF8FA")
 
       # Create Canvas which will serve as the monitor
-        self.canvas = tk.Canvas(self, width=400, height=220, bg="white", highlightthickness=1, highlightbackground="black")
+        self.canvas = tk.Canvas(self, width=700, height=220, bg="white", highlightthickness=1, highlightbackground="black")
         self.canvas.place(x=30, y=210)
 
+    def reader(self):
+        search_query = self.entry_search.get()
+
+        # Clear canvas
+        self.canvas.delete("all")
+
+        # Read data from text file
+        found_data = False
+
+        # Read data from text file
+        with open("contact_tracing_data.txt", "r") as file:
+            for line in file:
+                values = line.strip().split(", ")
+                if values[1] == search_query:
+                    info = {
+                        "Date": values[0],
+                        "Name": values[1],
+                        "Contact Number": values[2],
+                        "Email": values[3],
+                        "Vaccination Status": values[4],
+                        "Close Contact with Positive COVID-19 Case": values[5],
+                        "Close Contact with Symptoms": values[6],
+                        "Tested for COVID-19": values[7],
+                        "Symptoms experienced in the past 7 days": values[8],
+                        "Date of Last Visit": values[9],
+                        "Places have been": values[10]
+                        }
+                    info_text = ""
+                    for key, value in info.items():
+                        info_text += f"{key}: {value}\n"
+                    self.canvas.create_text(10, 10, anchor="nw", text=info_text, font=("Arial", 11), fill="black")
+                    found_data = True
+                    break
+        if not found_data:
+            self.canvas.create_text(10, 10, anchor="nw", text="No information found.", font=("Arial", 11), fill="black")
+            
     # resize image 
     def resize_image(self, event):
         new_width = event.width

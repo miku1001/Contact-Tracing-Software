@@ -288,33 +288,33 @@ class InfoFrame(tk.Frame):
             tested_covid = "No"
 
         # Create a string with the formatted information
-        info_string = f"Date: {date}\nName: {name}\nContact Number: {number}\nEmail: {email}\n"
-        info_string += f"Vaccination Status: {vaccination_status}\n"
-        info_string += f"Close Contact with Positive COVID-19 Case: {contact_positive}\n"
-        info_string += f"Close Contact with Symptoms: {contact_symptoms}\n"
-        info_string += f"Tested for COVID-19: {tested_covid}\n"
+        info_string = f"{date}, {name},{number}, {email}, "
+        info_string += f"{vaccination_status}, "
+        info_string += f"{contact_positive}, "
+        info_string += f"{contact_symptoms}, "
+        info_string += f"{tested_covid}, "
 
         # Write checked values horizontally
         symptoms = []
         if self.symptom1_var.get():
             symptoms.append("Fever")
-        elif self.symptom2_var.get():
+        if self.symptom2_var.get():
             symptoms.append("Difficulty in breathing")
-        elif self.symptom3_var.get():
+        if self.symptom3_var.get():
             symptoms.append("Cough")
-        elif self.symptom4_var.get():
+        if self.symptom4_var.get():
             symptoms.append("Loss of sense of taste or smell")
-        elif self.symptom5_var.get():
+        if self.symptom5_var.get():
             symptoms.append("Sore throat")
-        elif self.no_symptom_var.get():
+        if self.no_symptom_var.get():
             symptoms.append("None")
 
         # Format symptoms
-        info_string += f"Symptoms experienced in the past 7 days: {', '.join(symptoms)}"
+        info_string += f"{'| '.join(symptoms)}"
 
         # Write the information to a text file
         with open("contact_tracing_data.txt", "a") as file:
-            file.write(info_string + "\n")
+            file.write(info_string + ",")
         self.switch_frame(2) 
 
     # Must complete the data
