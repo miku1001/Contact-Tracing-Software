@@ -89,20 +89,20 @@ class InfoFrame(tk.Frame):
         self.vacc.config(bg="#BAF8FA")
         
         # Vacc stat
-        self.radio = tk.IntVar()
-        self.stat1 = tk.Radiobutton(self, text="Not Yet",font=("Arial", 10),variable=self.radio,  value = "1")
+        self.radio_vacc = tk.IntVar()
+        self.stat1 = tk.Radiobutton(self, text="Not Yet",font=("Arial", 10),variable=self.radio_vacc,  value = "1")
         self.stat1.place(x=43, y= 135)
         self.stat1.config(bg="#BAF8FA")
 
-        self.stat2 = tk.Radiobutton(self, text="1st Dose",font=("Arial", 10), variable=self.radio, value = "2")
+        self.stat2 = tk.Radiobutton(self, text="1st Dose",font=("Arial", 10), variable=self.radio_vacc, value = "2")
         self.stat2.place(x=43, y= 157)
         self.stat2.config(bg="#BAF8FA")
 
-        self.stat3 = tk.Radiobutton(self, text="2nd Dose",font=("Arial", 10), variable=self.radio, value = "3")
+        self.stat3 = tk.Radiobutton(self, text="2nd Dose",font=("Arial", 10), variable=self.radio_vacc, value = "3")
         self.stat3.place(x=170, y= 135)
         self.stat3.config(bg="#BAF8FA")
 
-        self.stat4 = tk.Radiobutton(self, text="With Booster",font=("Arial", 10), variable=self.radio, value = "4")
+        self.stat4 = tk.Radiobutton(self, text="With Booster",font=("Arial", 10), variable=self.radio_vacc, value = "4")
         self.stat4.place(x=170, y= 157)
         self.stat4.config(bg="#BAF8FA")
 
@@ -151,12 +151,12 @@ class InfoFrame(tk.Frame):
         self.vacc.config(bg="#BAF8FA")
 
         # Yes or no
-        self.radio = tk.IntVar()
-        self.yes1 = tk.Radiobutton(self, text="Yes",font=("Arial", 10),variable=self.radio,  value = "1")
+        self.radio_contact_positive = tk.IntVar()
+        self.yes1 = tk.Radiobutton(self, text="Yes",font=("Arial", 10),variable=self.radio_contact_positive,  value = "1")
         self.yes1.place(x=40, y= 245)
         self.yes1.config(bg="#BAF8FA")
 
-        self.no1 = tk.Radiobutton(self, text="No",font=("Arial", 10),variable=self.radio,  value = "2")
+        self.no1 = tk.Radiobutton(self, text="No",font=("Arial", 10),variable=self.radio_contact_positive,  value = "2")
         self.no1.place(x=130, y= 245)
         self.no1.config(bg="#BAF8FA")
 
@@ -167,12 +167,12 @@ class InfoFrame(tk.Frame):
         self.vacc.config(bg="#BAF8FA")
 
         # Yes or no
-        self.radio = tk.IntVar()
-        self.yes2 = tk.Radiobutton(self, text="Yes",font=("Arial", 10),variable=self.radio,  value = "1")
+        self.radio_contact_symptoms = tk.IntVar()
+        self.yes2 = tk.Radiobutton(self, text="Yes",font=("Arial", 10),variable=self.radio_contact_symptoms,  value = "1")
         self.yes2.place(x=40, y= 305)
         self.yes2.config(bg="#BAF8FA")
 
-        self.no2 = tk.Radiobutton(self, text="No",font=("Arial", 10),variable=self.radio,  value = "2")
+        self.no2 = tk.Radiobutton(self, text="No",font=("Arial", 10),variable=self.radio_contact_symptoms,  value = "2")
         self.no2.place(x=130, y= 305)
         self.no2.config(bg="#BAF8FA")
 
@@ -183,20 +183,20 @@ class InfoFrame(tk.Frame):
         self.vacc.config(bg="#BAF8FA")
 
         # Tested?
-        self.radio = tk.IntVar()
-        self.yes_negative = tk.Radiobutton(self, text="Yes (Negative)",font=("Arial", 10),variable=self.radio,  value = "1")
+        self.radio_tested_covid = tk.IntVar()
+        self.yes_negative = tk.Radiobutton(self, text="Yes (Negative)",font=("Arial", 10),variable=self.radio_tested_covid,  value = "1")
         self.yes_negative.place(x=40, y= 370 )
         self.yes_negative.config(bg="#BAF8FA")
 
-        self.yes_positive = tk.Radiobutton(self, text="Yes (Positive) ",font=("Arial", 10),variable=self.radio,  value = "2")
+        self.yes_positive = tk.Radiobutton(self, text="Yes (Positive) ",font=("Arial", 10),variable=self.radio_tested_covid,  value = "2")
         self.yes_positive.place(x=40, y= 400)
         self.yes_positive.config(bg="#BAF8FA")
         
-        self.yes_pending = tk.Radiobutton(self, text="Yes (Pending) ",font=("Arial", 10),variable=self.radio,  value = "2")
+        self.yes_pending = tk.Radiobutton(self, text="Yes (Pending) ",font=("Arial", 10),variable=self.radio_tested_covid,  value = "3")
         self.yes_pending.place(x=200, y= 370)
         self.yes_pending.config(bg="#BAF8FA")
 
-        self.not_tested = tk.Radiobutton(self, text="No ",font=("Arial", 10),variable=self.radio,  value = "2")
+        self.not_tested = tk.Radiobutton(self, text="No ",font=("Arial", 10),variable=self.radio_tested_covid,  value = "4")
         self.not_tested.place(x=200, y= 400)
         self.not_tested.config(bg="#BAF8FA")
 
@@ -247,16 +247,27 @@ class InfoFrame(tk.Frame):
     def hide(self):
         self.pack_forget()
 
-    # save entry info to txt
+    # save data info to txt
     def save_info(self):
+
         # Get the information from the entry fields
         date = self.entry_date.get()
         name = self.entry_name.get()
         number = self.entry_number.get()
         email = self.entry_email.get()
 
+        # Get radiobutton values
+        vaccination_status = self.radio_vacc.get()
+        contact_positive = self.radio_contact_positive.get()
+        contact_symptoms = self.radio_contact_symptoms.get()
+        tested_covid = self.radio_tested_covid.get()
+
         # Create a string with the formatted information
         info_string = f"Date: {date}\nName: {name}\nContact Number: {number}\nEmail: {email}\n"
+        info_string += f"Vaccination Status: {vaccination_status}\n"
+        info_string += f"Close Contact with Positive COVID-19 Case: {contact_positive}\n"
+        info_string += f"Close Contact with Symptoms: {contact_symptoms}\n"
+        info_string += f"Tested for COVID-19: {tested_covid}\n"
 
         # Write the information to a text file
         with open("contact_tracing_data.txt", "a") as file:
