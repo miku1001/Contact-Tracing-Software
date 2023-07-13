@@ -1,9 +1,0 @@
-Date: MM/DD/YY
-Name: FIRSTNAME/LASTNAME/SURNAME
-Contact Number: 
-Email: juan23@example.com
-Vaccination Status: Not Yet
-Close Contact with Positive COVID-19 Case: Yes
-Close Contact with Symptoms: Yes
-Tested for COVID-19: Yes (Negative)
-Symptoms experienced in the past 7 days: 

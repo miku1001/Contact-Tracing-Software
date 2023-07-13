@@ -12,7 +12,7 @@ class InfoFrame(tk.Frame):
         self.label = tk.Label(self, text="Frame 1")
         self.label.pack(pady=20)
 
-      # Create a separate frame for encapsulating the widgets
+        # Create a separate frame for encapsulating the widgets
         content_frame = tk.Frame(self)
         content_frame.pack()
 
