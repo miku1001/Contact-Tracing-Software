@@ -256,25 +256,25 @@ class InfoFrame(tk.Frame):
 
         # Get radiobutton values
         vaccination_status = ""
-        if self.radio_vacc.get() == 1:
+        if self.radio_vacc.get() == 0:
             vaccination_status = "Not Yet"
-        elif self.radio_vacc.get() == 2:
+        elif self.radio_vacc.get() == 1:
             vaccination_status = "1st Dose"
-        elif self.radio_vacc.get() == 3:
+        elif self.radio_vacc.get() == 2:
             vaccination_status = "2nd Dose"
-        elif self.radio_vacc.get() == 4:
+        elif self.radio_vacc.get() == 3:
             vaccination_status = "With Booster"
 
         contact_positive = ""
-        if self.radio_contact_positive.get() == 1:
+        if self.radio_contact_positive.get() == 0:
             contact_positive = "Yes"
-        elif self.radio_contact_positive.get() == 2:
+        elif self.radio_contact_positive.get() == 1:
             contact_positive = "No"
 
         contact_symptoms = ""
-        if self.radio_contact_symptoms.get() == 1:
+        if self.radio_contact_symptoms.get() == 0:
             contact_symptoms = "Yes"
-        if self.radio_contact_symptoms.get() == 2:
+        if self.radio_contact_symptoms.get() == 1:
              contact_symptoms = "No"
 
         tested_covid = ""

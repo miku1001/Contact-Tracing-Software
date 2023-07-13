@@ -19,7 +19,7 @@ class ContactTracing(tk.Tk):
         self.frame0 = FrontPage(self, self.switch_frame)
         self.frame1 = InfoFrame(self, self.switch_frame)
         self.frame2 = InfoFrame2(self, self.switch_frame)
-
+    
         self.frames = [self.frame0, self.frame1, self.frame2]
 
         # Show the first frame
