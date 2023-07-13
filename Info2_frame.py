@@ -41,12 +41,23 @@ class InfoFrame2(InfoFrame):
         self.info.config(bg="#BAF8FA")
 
         # submit button
-        self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green", command=lambda: [self.save_info(), self.create_popup(), quit()])
+        self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green", command=lambda: [self.submit_additional(), self.create_popup(), quit()])
         self.submit_button.place(x=500, y=430)
 
         # Back Button
         self.submit_button = tk.Button(self, text="Back", height=1, font=("Arial", 11), bg="red", command=lambda: switch_frame(1))
         self.submit_button.place(x=360, y=430)
+    
+    def submit_additional(self):
+        time = self.entry_loc.get()
+        place = self.entry_phb.get()
+                
+        additional_info_string = f"Date of Last Visit: {time}\n"
+        additional_info_string += f"Places have been: {place}\n"
+
+        with open("contact_tracing_data.txt", "a") as file:
+            file.write(additional_info_string + "\n")
+
 
 
     # Create pop up notice

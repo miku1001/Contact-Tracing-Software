@@ -208,7 +208,7 @@ class InfoFrame(tk.Frame):
         self.vacc.config(bg="#BAF8FA")
 
         # submit button
-        self.submit_button = tk.Button(self, text="Next", command=lambda: [self.validate_form()], height=1, font=("Arial", 11), bg="green")
+        self.submit_button = tk.Button(self, text="Next", command=lambda: [self.validate_form() and self.save_info()], height=1, font=("Arial", 11), bg="green")
         self.submit_button.place(x=430, y=460) 
         
     # click submit button
@@ -314,7 +314,8 @@ class InfoFrame(tk.Frame):
 
         # Write the information to a text file
         with open("contact_tracing_data.txt", "a") as file:
-            file.write(info_string)
+            file.write(info_string + "\n")
+        self.switch_frame(2) 
 
     # Must complete the data
     def validate_form(self):
@@ -323,4 +324,4 @@ class InfoFrame(tk.Frame):
             tk.messagebox.showerror("Error", "Please select an option for all radio buttons.")
             return False
         else:
-            self.switch_frame(2) 
+            return True
