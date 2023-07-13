@@ -1,6 +1,0 @@
-aug, ted, 0909, ted@ted.com, YES , No, Yes, Yes (Positive), Fever| Difficulty in breathing| Cough, kahapon, bahay
-aug, mark, 0909, ted@ted.com, YES , No, Yes, Yes (Positive), Fever| Difficulty in breathing| Cough, kahapon, hatdog
-10/25/2003, Ted, 09157996213, pauloted.22@gmail.com, With Booster,  ,  ,  , None, 10/25/2003, Bahay
-12121, moy, asas, asas, , No, No, , Difficulty in breathing| Loss of sense of taste or smell, ,asa, asasa + 
-121, ss, qq, wfsqd, With Booster, , , Yes (Positive), Difficulty in breathing| Cough, ,assa, sasas + 
-assa, asasas, asasa, asasas, With Booster, Yes, Yes, Yes (Pending), Fever| Difficulty in breathing, ,as, as + 

@@ -25,8 +25,12 @@ class FrontPage(tk.Frame):
         # search
         self.search_button = tk.Button(self, text="Search", command=lambda: switch_frame(3), width=10, height=1, font=("Arial", 18))
         self.search_button.place(x=530, y=230)
+        # exit button
+        self.exit_button = tk.Button(self, text="Exit", command=lambda: quit(), width=10, height=1, font=("Arial", 18))
+        self.exit_button.place(x=530, y=350)
 
         self.bind("<Configure>", self.resize_image)
+
 
     # resize image 
     def resize_image(self, event):

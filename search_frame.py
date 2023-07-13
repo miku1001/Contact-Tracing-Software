@@ -34,9 +34,13 @@ class SearchFrame(tk.Frame):
 
         # Create Search Button
         self.submit_button = tk.Button(self, text="Search", height=1, font=("Arial", 10), bg="white", command= self.reader)
-        self.submit_button.place(x=34, y=135)
+        self.submit_button.place(x=34, y=120)
 
+        # Create back to menu button
+        self.submit_button = tk.Button(self, text="Back to Menu", height=1, font=("Arial", 12), bg="white", command=lambda: self.switch_frame(0))
+        self.submit_button.place(x=410, y=450)
 
+        # Create instruction
         self.search = tk.Label(self,text = "Check the information in the box below.", height=1, font=("Arial", 11))
         self.search.place(x=30, y=180)
         self.search.config(bg="#BAF8FA")

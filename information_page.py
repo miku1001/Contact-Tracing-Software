@@ -321,7 +321,7 @@ class InfoFrame(tk.Frame):
     def validate_form(self):
         # Check if at least one radio button is selected
         if self.radio_vacc.get() == 0 or self.radio_contact_positive.get() == 0 or self.radio_contact_symptoms.get() == 0 or self.radio_tested_covid.get() == 0:
-            tk.messagebox.showerror("Error", "Please select an option for all radio buttons.")
+            tk.messagebox.showerror("Error", "Please select an option for all questions.")
             return False
         else:
             return True
