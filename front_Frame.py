@@ -22,15 +22,15 @@ class FrontPage(tk.Frame):
 
         # create buttons
         # add
-        self.add_button = tk.Button(self, text="Add Data", command=lambda: switch_frame(1), width=12, height=1, font=("Arial", 18))
-        self.add_button.place(x=518, y=290)
+        self.add_button = tk.Button(self, text="Add Information", command=lambda: switch_frame(1), width=15, height=1, font=("Arial", 18))
+        self.add_button.place(x=495, y=210)
 
         # search
         self.search_button = tk.Button(self, text="Search", command=lambda: switch_frame(3), width=10, height=1, font=("Arial", 18))
-        self.search_button.place(x=530, y=230)
+        self.search_button.place(x=530, y=270)
         # exit button
         self.exit_button = tk.Button(self, text="Exit", command=lambda: quit(), width=10, height=1, font=("Arial", 18))
-        self.exit_button.place(x=530, y=350)
+        self.exit_button.place(x=530, y=330)
 
     def show(self):
         self.pack()
