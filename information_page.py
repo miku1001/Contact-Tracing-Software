@@ -288,11 +288,11 @@ class InfoFrame(tk.Frame):
             tested_covid = "No"
 
         # Create a string with the formatted information
-        info_string = f"{date}, {name}, {number}, {email}, "
-        info_string += f"{vaccination_status}, "
-        info_string += f"{contact_positive}, "
-        info_string += f"{contact_symptoms}, "
-        info_string += f"{tested_covid}, "
+        info_string = f"Date: {date}, Name: {name}, Contact Number: {number}, Email: {email}, "
+        info_string += f"Vaccination Status: {vaccination_status}, "
+        info_string += f"Close Contact with Positive COVID-19 Case: {contact_positive}, "
+        info_string += f"Close Contact with Symptoms: {contact_symptoms}, "
+        info_string += f"Tested for COVID-19: {tested_covid}, "
 
         # Write checked values horizontally
         symptoms = []
@@ -310,18 +310,18 @@ class InfoFrame(tk.Frame):
             symptoms.append("None")
 
         # Format symptoms
-        info_string += f"{'| '.join(symptoms)}, "
+        info_string += f"Symptoms experienced in the past 7 days: {'| '.join(symptoms)}, "
 
         # Write the information to a text file
         with open("contact_tracing_data.txt", "a") as file:
-            file.write(info_string + ",")
+            file.write(info_string)
         self.switch_frame(2) 
 
     # Must complete the data
     def validate_form(self):
         # Check if at least one radio button is selected
         if self.radio_vacc.get() == 0 or self.radio_contact_positive.get() == 0 or self.radio_contact_symptoms.get() == 0 or self.radio_tested_covid.get() == 0:
-            tk.messagebox.showerror("Error", "Please select an option for all questions.")
+            tk.messagebox.showerror("Error", "Please select an option for all questions.")  
             return False
         else:
             return True

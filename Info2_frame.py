@@ -48,8 +48,8 @@ class InfoFrame2(InfoFrame):
         time = self.entry_loc.get()
         place = self.entry_phb.get()
                 
-        additional_info_string = f"{time}, "
-        additional_info_string += f"{place}\n"
+        additional_info_string = f"Date of Last Visit: {time}, "
+        additional_info_string += f"Places have been: {place}\n"
 
         with open("contact_tracing_data.txt", "a") as file:
             file.write(additional_info_string)
