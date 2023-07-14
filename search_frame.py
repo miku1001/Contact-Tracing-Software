@@ -10,6 +10,8 @@ class SearchFrame(tk.Frame):
 
         self.label = tk.Label(self, text="Search")
         self.label.pack(pady=20)
+        # Window won't be maximized
+        parent.resizable(False, False)
 
         # Import bg image
         self.image = Image.open("FFPAGE BG.png")
@@ -38,7 +40,7 @@ class SearchFrame(tk.Frame):
 
         # Create back to menu button
         self.submit_button = tk.Button(self, text="Back to Menu", height=1, font=("Arial", 12), bg="white", command=lambda: self.switch_frame(0))
-        self.submit_button.place(x=410, y=450)
+        self.submit_button.place(x=380, y=450)
 
         # Create instruction
         self.search = tk.Label(self,text = "Check the information in the box below.", height=1, font=("Arial", 11))

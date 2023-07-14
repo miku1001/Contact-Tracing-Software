@@ -10,6 +10,8 @@ class InfoFrame2(InfoFrame):
         super().__init__(parent, switch_frame)
         self.label = tk.Label(self, text="Frame 2")
         self.label.pack(pady=20)
+        # Window won't be maximized
+        parent.resizable(False, False)
 
         # Import bg image
         image = Image.open("FFPAGE BG.png")

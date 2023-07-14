@@ -12,6 +12,9 @@ class InfoFrame(tk.Frame):
         self.label = tk.Label(self, text="Frame 1")
         self.label.pack(pady=20)
 
+        # Window won't be maximized
+        parent.resizable(False, False)
+
         # Create a separate frame for encapsulating the widgets
         content_frame = tk.Frame(self)
         content_frame.pack()
@@ -19,7 +22,6 @@ class InfoFrame(tk.Frame):
         # Import bg image
         self.image = Image.open("FFPAGE BG.png")
         self.bg_image = ImageTk.PhotoImage(self.image)
-        self.bind("<Configure>", self.resize_image)
 
         self.bg_label = tk.Label(self, image=self.bg_image)
         self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
@@ -229,15 +231,6 @@ class InfoFrame(tk.Frame):
     def clear_email_text(self, event):
         self.entry_email.delete(0, tk.END)
         self.entry_email.config(fg="black")
-
-    # resize image 
-    def resize_image(self, event):
-        new_width = event.width
-        new_height = event.height
-
-        resized_image = self.image.resize((new_width, new_height), Image.NEAREST)
-        self.bg_image = ImageTk.PhotoImage(resized_image)
-        self.bg_label.configure(image=self.bg_image) 
 
     def show(self):
         self.pack()

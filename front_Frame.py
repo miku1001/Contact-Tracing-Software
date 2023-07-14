@@ -10,6 +10,9 @@ class FrontPage(tk.Frame):
         self.label = tk.Label(self, text="Frame 0")
         self.label.pack(pady=20)
 
+        # Window won't be maximized
+        parent.resizable(False, False)
+
     # create background image for front page
         self.image = Image.open("FRONTPAGE BG.png")  # Update the image file path
         self.bg_image = ImageTk.PhotoImage(self.image)
@@ -28,19 +31,6 @@ class FrontPage(tk.Frame):
         # exit button
         self.exit_button = tk.Button(self, text="Exit", command=lambda: quit(), width=10, height=1, font=("Arial", 18))
         self.exit_button.place(x=530, y=350)
-
-        self.bind("<Configure>", self.resize_image)
-
-
-    # resize image 
-    def resize_image(self, event):
-        new_width = event.width
-        new_height = event.height
-
-        resized_image = self.image.resize((new_width, new_height), Image.NEAREST)
-        self.bg_image = ImageTk.PhotoImage(resized_image)
-
-        self.bg_label.configure(image=self.bg_image)
 
     def show(self):
         self.pack()

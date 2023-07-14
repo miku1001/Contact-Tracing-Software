@@ -12,6 +12,7 @@ class ContactTracing(tk.Tk):
         # Configure main application window
         self.title("Covid Contact Tracing App")
         self.geometry("900x500")
+        self.resizable(False, False)
 
         self.frames = []
         self.current_frame = 0
