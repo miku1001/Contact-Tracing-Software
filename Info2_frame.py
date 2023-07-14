@@ -43,7 +43,7 @@ class InfoFrame2(InfoFrame):
         self.info.config(bg="#BAF8FA")
 
         # submit button
-        self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green", command=lambda: [self.submit_additional(), self.create_popup(), switch_frame(0)])
+        self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green", command=lambda: [self.submit_additional(), self.create_popup(), switch_frame(0), self.clear_fields()])
         self.submit_button.place(x=430, y=430)
     
     def submit_additional(self):
@@ -55,6 +55,11 @@ class InfoFrame2(InfoFrame):
 
         with open("contact_tracing_data.txt", "a") as file:
             file.write(additional_info_string)
+    
+    # Clear field after submission
+    def clear_fields(self):
+        self.entry_loc.delete(0, tk.END)
+        self.entry_phb.delete(0, tk.END)
 
 
 

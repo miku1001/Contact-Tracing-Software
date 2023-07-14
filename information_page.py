@@ -32,28 +32,22 @@ class InfoFrame(tk.Frame):
         self.info.config(bg="#BAF8FA")
 
         # Date
-        self.date = tk.Label(self, text = "Date", height = 1, font=("Arial", 12))
+        self.date = tk.Label(self, text = "Date:", height = 1, font=("Arial", 12))
         self.date.place(x = 30, y =40)
         self.date.config(bg="#BAF8FA")
 
         # Date Entry
         self.entry_date = tk.Entry(self, width=30)
         self.entry_date.place(x=120, y=43)
-        self.entry_date.insert(0, "MM/DD/YY")  # Set initial text
-        self.entry_date.bind("<FocusIn>", self.clear_date_text)
-        self.entry_date.config(fg="gray")
         
         # Name
-        self.name = tk.Label(self, text = "Full Name", height = 1, font=("Arial", 12))
+        self.name = tk.Label(self, text = "Full Name:", height = 1, font=("Arial", 12))
         self.name.place(x = 30, y =70)
         self.name.config(bg="#BAF8FA")
 
         # Name Entry
         self.entry_name = tk.Entry(self, width=40)
         self.entry_name.place(x=120, y= 73)
-        self.entry_name.insert(0, "FIRSTNAME/LASTNAME/SURNAME")  # Set initial text
-        self.entry_name.bind("<FocusIn>", self.clear_name_text)
-        self.entry_name.config(fg="gray")
 
         # Contact label
         self.info = tk.Label(self,text = "Contact Details", height=1, font=("Arial", 12))
@@ -77,9 +71,6 @@ class InfoFrame(tk.Frame):
         # Email Entry
         self.entry_email = tk.Entry(self, width=25)
         self.entry_email.place(x=715, y= 73)
-        self.entry_email.insert(0, "juan23@example.com")  # Set initial text
-        self.entry_email.bind("<FocusIn>", self.clear_email_text)
-        self.entry_email.config(fg="gray")
 
         # add division line
         self.line = tk.Canvas(self, width=900, height=1, bg="black", highlightthickness=0)
@@ -212,25 +203,7 @@ class InfoFrame(tk.Frame):
         # submit button
         self.submit_button = tk.Button(self, text="Next", command=lambda: [self.validate_form() and self.save_info()], height=1, font=("Arial", 11), bg="green")
         self.submit_button.place(x=430, y=460) 
-        
-    # click submit button
-    def submit_button_clicked(self):
-        self.submit_clicked = True
-        self.checkbutton_info()
 
-    # Display text will be gone if the user click the entry
-    def clear_date_text(self, event):
-        self.entry_date.delete(0, tk.END)
-        self.entry_date.config(fg="black")
-    def clear_name_text(self, event):
-        self.entry_name.delete(0, tk.END)
-        self.entry_name.config(fg="black")
-    def clear_number_text(self, evert):
-        self.entry_number.delete(0, tk.END)
-        self.entry_number.config(fg="black")
-    def clear_email_text(self, event):
-        self.entry_email.delete(0, tk.END)
-        self.entry_email.config(fg="black")
 
     def show(self):
         self.pack()
@@ -308,6 +281,7 @@ class InfoFrame(tk.Frame):
         # Write the information to a text file
         with open("contact_tracing_data.txt", "a") as file:
             file.write(info_string)
+        self.clear_fields()
         self.switch_frame(2) 
 
     # Must complete the data
@@ -318,3 +292,20 @@ class InfoFrame(tk.Frame):
             return False
         else:
             return True
+        
+    # Clear field after submission
+    def clear_fields(self):
+        self.entry_date.delete(0, tk.END)  # Clear the date entry field
+        self.entry_name.delete(0, tk.END)  # Clear the name entry field
+        self.entry_number.delete(0, tk.END)  # Clear the contact number entry field
+        self.entry_email.delete(0, tk.END)  # Clear the email entry field
+        self.radio_vacc.set(0)  # Deselect all vaccination status radio buttons
+        self.radio_contact_positive.set(0)  # Deselect all close contact with positive COVID-19 radio buttons
+        self.radio_contact_symptoms.set(0)  # Deselect all close contact with symptoms radio buttons
+        self.radio_tested_covid.set(0)  # Deselect all tested for COVID-19 radio buttons
+        self.symptom1_var.set(False)  # Clear the symptom checkboxes
+        self.symptom2_var.set(False)
+        self.symptom3_var.set(False)
+        self.symptom4_var.set(False)
+        self.symptom5_var.set(False)
+        self.no_symptom_var.set(False)
