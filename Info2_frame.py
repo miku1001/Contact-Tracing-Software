@@ -43,7 +43,7 @@ class InfoFrame2(InfoFrame):
         self.info.config(bg="#BAF8FA")
 
         # submit button
-        self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green", command=lambda: [self.submit_additional(), self.create_popup(), quit()])
+        self.submit_button = tk.Button(self, text="Submit", height=1, font=("Arial", 11), bg="green", command=lambda: [self.submit_additional(), self.create_popup(), switch_frame(0)])
         self.submit_button.place(x=430, y=430)
     
     def submit_additional(self):
