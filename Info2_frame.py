@@ -60,4 +60,4 @@ class InfoFrame2(InfoFrame):
 
     # Create pop up notice
     def create_popup(self):
-        messagebox.showinfo("Yehey!", "Your information is submittted sucessfully!!")
+        messagebox.showinfo("Success!", "Your information was submitted sucessfully!!")
